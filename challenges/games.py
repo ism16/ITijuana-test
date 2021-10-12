@@ -1,4 +1,5 @@
 from typing import List, Generator
+import argparse
 
 
 class Rook:
@@ -46,3 +47,11 @@ class Rook:
     def left(self, steps: int):
         self.x -= steps
         self.distance += steps
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('sequence', help='Sequence of movements, e.g.: up 1, left 3, down 2', type=str)
+
+    args = parser.parse_args()
+    rook = Rook(args.sequence)

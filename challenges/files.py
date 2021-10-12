@@ -3,6 +3,7 @@ import csv
 import _csv
 import pandas as pd # type: ignore
 import re
+import argparse
 
 
 # question 1
@@ -54,3 +55,17 @@ def sum_columns_from_csv(filename: str, column: int) -> int:
 
 
 
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('function', help='The function to be run (question_1 or question_2', type=str)
+    parser.add_argument('arg1', help='For question_1 phrase and for question_2 filename', type=str)
+    parser.add_argument('arg2', help='For question_1 text and for question_2 column', type=str)
+
+    args = parser.parse_args()
+
+    if args.function == 'question_1':
+        print(search_for_text(args.arg1, args.arg2))
+    elif args.function == 'question_2':
+        print(sum_columns_from_csv(args.arg1, int(args.arg2)))
+    else:
+        print('Option not valid!')

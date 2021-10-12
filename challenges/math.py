@@ -1,4 +1,5 @@
 from typing import List
+import argparse
 
 
 def question_1(x: int, y: int) -> List[int]:
@@ -35,6 +36,8 @@ def question_3(x: int, b: int) -> str:
     Then the list will be flipped. This technique is used in binary, hexadecimal conversions and works for any base, but in this 
     case will be limited to a base of 9 in order to avoid working with letters.
     '''
+    if b == 1:
+        return str('invalid')
     if x == 0:
         return '0'
     number: str = ''
@@ -46,3 +49,20 @@ def question_3(x: int, b: int) -> str:
             number += str(x%b)
             x //= b
     return number[::-1]
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('function', help='The function to be run (question_1, question_2, question_3', type=str)
+    parser.add_argument('integer1', help='First integer', type=int)
+    parser.add_argument('integer2', help='Second integer', type=int)
+
+    args = parser.parse_args()
+
+    if args.function == 'question_1':
+        print(question_1(args.integer1, args.integer2))
+    elif args.function == 'question_2':
+        print(question_2())
+    elif args.function == 'question_3':
+        print(question_3(args.integer1, args.integer2))
+    else:
+        print('Option not valid!')

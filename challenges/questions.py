@@ -1,4 +1,5 @@
 from typing import List, Generator
+import argparse
 
 def perfect_square_generator(N: int) -> Generator:
     '''
@@ -16,3 +17,11 @@ def perfect_square_generator(N: int) -> Generator:
     N = int(N**(1/2)) if int(N**(1/2)) == N**(1/2) else int(N**(1/2))+1
     for i in range(1,N):
         yield i*i
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('integer', help='Integer N', type=int)
+
+    args = parser.parse_args()
+    print([x for x in perfect_square_generator(args.integer)])
