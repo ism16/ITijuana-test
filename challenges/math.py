@@ -20,7 +20,7 @@ def question_2() -> str:
     x = input('Give me a number to be converted: ')
     b = input('To which base shoul I convert it (0-9): ')
 
-    number: str = question_3(x, b)
+    number: str = question_3(int(x), int(b))
 
     return number
 

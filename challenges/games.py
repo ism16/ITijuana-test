@@ -11,7 +11,7 @@ class Rook:
 
         for command in commands:
             cmd, steps = command.strip().split(' ')
-            steps: int = int(steps)
+            steps: int = int(steps)  # type: ignore
 
             if cmd == 'up':
                 self.up(steps)
